@@ -1,42 +1,137 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculateur New World (GSheet)</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New World Tools Hub</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 2rem; max-width: 900px; margin: auto; }
-    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
-    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
-    th { background-color: #f0f0f0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: #0f0f0f;
+      color: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
+      font-size: 1.3rem;
+      margin-top: 0;
+    }
+    .meta {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+    .desc {
+      margin-bottom: 1rem;
+    }
+    .status {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    a.button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      background: #4caf50;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    a.button:hover {
+      background: #45a049;
+    }
   </style>
 </head>
 <body>
-  <h1>📊 Buffs RendWiP - New World</h1>
-  <div id="table">Chargement...</div>
-
-  <script>
-    const SHEET_ID = '1LfvIKEP6ALVQQL1VXbFMSwTFCy4hSFiBKOY2ydnMXoU';
-    const SHEET_NAME = 'RendWiP';
-    const API_KEY = 'AIzaSyC-r1SiStZ1BNcNhmW4upfT1gqWkC9fEos'; // ← Remplace ça par ta vraie clé API
-
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
-
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        const rows = data.values;
-        if (!rows || rows.length === 0) return document.getElementById('table').innerText = 'Aucune donnée trouvée.';
-        let html = '<table><thead><tr>' + rows[0].map(cell => `<th>${cell}</th>`).join('') + '</tr></thead><tbody>';
-        for (let i = 1; i < rows.length; i++) {
-          html += '<tr>' + rows[i].map(cell => `<td>${cell}</td>`).join('') + '</tr>';
-        }
-        html += '</tbody></table>';
-        document.getElementById('table').innerHTML = html;
-      })
-      .catch(err => {
-        document.getElementById('table').innerText = 'Erreur de chargement des données';
-        console.error(err);
-      });
-  </script>
+  <h1>📘 New World – Tools & Guides</h1>
+  <div class="grid">
+    <div class="card">
+      <h2>List of Buffs and Debuffs</h2>
+      <div class="meta">v5.0.0 – Last updated: 23/05/2024 | Game version: 5.0.1</div>
+      <div class="desc">List of all Empower/Fortify/Weaken/etc., check boxes to reach caps! Includes damage formula and cap info.</div>
+      <div class="status">Status: ❗ NEED S6 UPDATE</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/1LfvIKEP6ALVQQL1VXbFMSwTFCy4hSFiBKOY2ydnMXoU/edit?usp=sharing" target="_blank">Open Sheet</a>
+    </div>
+    <div class="card">
+      <h2>[PTR] List of Buffs and Debuffs</h2>
+      <div class="meta">v5.0.0 – Last updated: 18/03/2023 | Game version: PTR-S5</div>
+      <div class="desc">Same as above, but with PTR values! Currently includes a damage calculator (WiP).</div>
+      <div class="status">Status: ❗ NEED S6 UPDATE</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/1dkvh_TfyHiUssiZPqlTU6E1mElA4UWe2sPhLOHo7GxU/edit?usp=sharing" target="_blank">Open Sheet</a>
+    </div>
+    <div class="card">
+      <h2>NW:A S7 - Tierlists and Main Changes</h2>
+      <div class="meta">v7.0.0 – Last updated: 21/01/2025 | Game version: Season 7</div>
+      <div class="desc">Contains a list of all the changes per season, a list of artifacts, tierlists of all items.</div>
+      <div class="status">Status: ✅ Updated</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/1POUVTFSgep-vINzNvgVd7oP_O7dyzWsY2WEmx6eLypg/edit?usp=sharing" target="_blank">Open Sheet</a>
+    </div>
+    <div class="card">
+      <h2>Sandworm Raid Helper</h2>
+      <div class="meta">v3.0.0 – Last updated: 16/10/2024 | Game version: Aeternum</div>
+      <div class="desc">Complete guide for the Sandworm Trial with roles, gear, strategy, and Q&A.</div>
+      <div class="status">Status: 🔧 Almost Updated</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/1mr5AxEXMEtGrmarC4W-PLFkiVSoUFi1p10rJmBo69j8/edit?usp=sharing" target="_blank">Open Sheet</a>
+      <a class="button" href="https://www.youtube.com/watch?v=1hGCX9T6IqE&t=53s" target="_blank">📺 Video</a>
+    </div>
+    <div class="card">
+      <h2>Gorgon Raid Helper</h2>
+      <div class="meta">v1.0 – Last updated: 19/10/2024 | Game version: Aeternum</div>
+      <div class="desc">Complete guide for the Gorgon Raid with roles, gear, strategy, and Q&A.</div>
+      <div class="status">Status: 🧩 Missing last boss guide</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/19Q44yFeW2OZPYCH-OIJHKyvD9HOYz5SKZoTDBLRGXug/edit?usp=sharing" target="_blank">Open Sheet</a>
+      <a class="button" href="https://www.youtube.com/watch?v=NeYOqHj59ro&t=626s" target="_blank">📺 Video</a>
+    </div>
+    <div class="card">
+      <h2>ALL QUESTS</h2>
+      <div class="meta">v1.0.0 – Last updated: 19/10/2024 | Game version: Aeternum</div>
+      <div class="desc">Visualization of all quests in New World: Aeternum, with MSQ details, side and artifact quests.</div>
+      <div class="status">Status: ✅ Updated</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/1-3Au09xQS_cqB2MMAvITGHYE17pbYKP1vCWjNm2bym0/edit?usp=sharing" target="_blank">Open Sheet</a>
+    </div>
+    <div class="card">
+      <h2>NW:A Threat Changes</h2>
+      <div class="meta">v1.0.0 – Last updated: 19/10/2024 | Game version: Aeternum</div>
+      <div class="desc">Summary of all the changes to Threat in New World: Aeternum update.</div>
+      <div class="status">Status: ✅ Updated</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/13ClGSK0s7fpEY_dBo7npc7MYWiIENDZI8obk62MbFKE/edit?usp=sharing" target="_blank">Open Sheet</a>
+      <a class="button" href="https://www.youtube.com/watch?v=m61K-rWy5bI&t=17s" target="_blank">📺 Video</a>
+    </div>
+    <div class="card">
+      <h2>Stamina Damage</h2>
+      <div class="meta">v1.0.0 – Last updated: 19/10/2024 | Game version: Aeternum</div>
+      <div class="desc">Comparison of all NW:A abilities based on stamina and stagger damage.</div>
+      <div class="status">Status: ✅ Updated</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/1SV1K-vxt1p5SwoUhmoDkUH6B5_FPTH8yB-MzwbLTJ8Q/edit?usp=sharing" target="_blank">Open Sheet</a>
+    </div>
+    <div class="card">
+      <h2>Mutation Leaderboards - PBs</h2>
+      <div class="meta">v2.0.0 – Last updated: 21/07/2023 | Game version: 2.0.1</div>
+      <div class="desc">Track your Personal Bests in M3s each week, with WRs, group comparisons, and ranks.</div>
+      <div class="status">Status: 🚫 Abandoned for now</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/1TEDOg_ME9D0tZSnZKkLCsSPj9x9GZc277CTFfa-MU50/edit?usp=sharing" target="_blank">Open Sheet</a>
+    </div>
+  </div>
 </body>
 </html>
