@@ -2,31 +2,41 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Buffs List New World</title>
+  <title>Calculateur New World (GSheet)</title>
   <style>
-    body {
-      font-family: system-ui, sans-serif;
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    iframe {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      width: 100%;
-      height: 800px;
-    }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
+    body { font-family: Arial, sans-serif; padding: 2rem; max-width: 900px; margin: auto; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    th { background-color: #f0f0f0; }
   </style>
 </head>
 <body>
-  <h1>🧮 Calculateur Interactif pour New World</h1>
-  <p>Ce calculateur vous permet de cocher des cases, interagir avec des menus, et voir les calculs dynamiques directement.</p>
-  <p>⚠️ Vous devez être connecté à un compte Google.</p>
+  <h1>📊 Buffs RendWiP - New World</h1>
+  <div id="table">Chargement...</div>
 
-  <iframe src="https://script.google.com/macros/s/AKfycby6RHXBFq1BR03yVoFnYDkbl_UkZbTVFzSJcYAPelQranV9jgf4E9X9nqzXaSxoPT8c/exec" allowfullscreen></iframe>
+  <script>
+    const SHEET_ID = '1LfvIKEP6ALVQQL1VXbFMSwTFCy4hSFiBKOY2ydnMXoU';
+    const SHEET_NAME = 'RendWiP';
+    const API_KEY = 'AIzaSyC-r1SiStZ1BNcNhmW4upfT1gqWkC9fEos'; // ← Remplace ça par ta vraie clé API
+
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const rows = data.values;
+        if (!rows || rows.length === 0) return document.getElementById('table').innerText = 'Aucune donnée trouvée.';
+        let html = '<table><thead><tr>' + rows[0].map(cell => `<th>${cell}</th>`).join('') + '</tr></thead><tbody>';
+        for (let i = 1; i < rows.length; i++) {
+          html += '<tr>' + rows[i].map(cell => `<td>${cell}</td>`).join('') + '</tr>';
+        }
+        html += '</tbody></table>';
+        document.getElementById('table').innerHTML = html;
+      })
+      .catch(err => {
+        document.getElementById('table').innerText = 'Erreur de chargement des données';
+        console.error(err);
+      });
+  </script>
 </body>
 </html>
