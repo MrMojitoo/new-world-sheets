@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New World Sheets - by MrMojitoTV</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&display=swap');
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
@@ -12,14 +14,66 @@
       background: #0f0f0f;
       color: #f4f4f4;
     }
-    h1 {
+    header {
+      background: #98ff98;
+      padding: 2rem 1rem;
       text-align: center;
-      font-size: 2.5rem;
+      border-radius: 12px;
       margin-bottom: 2rem;
     }
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem;
+      margin: 0;
+      color: #0a0a0a;
+      letter-spacing: 1px;
+    }
+    .alert {
+      background-color: #ffcccc;
+      color: #2d0000;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 1600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .alert p {
+      margin: 0;
+      line-height: 1.5;
+    }
+    .alert strong {
+      font-weight: bold;
+      display: inline;
+    }
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .social-buttons a {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #333;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .social-buttons a:hover {
+      background-color: #555;
+    }
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.5rem;
     }
     .card {
@@ -28,113 +82,242 @@
       border-radius: 12px;
       padding: 1.5rem;
       transition: transform 0.3s ease;
+      text-align: center;
+      width: 350px; /* Increased card width */
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-sizing: border-box;
+      height: 450px; /* Added height for uniformity */
+      display: flex;
+      flex-direction: column;
     }
     .card:hover {
       transform: translateY(-5px);
     }
     .card h2 {
-      font-size: 1.3rem;
-      margin-top: 0;
+      background: #2e2e2e;
+      padding: 0.7rem;
+      border-radius: 8px;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
     }
+    .card.special {
+    /*background: linear-gradient(135deg, #b0b0b0, #595959); /* Dégradé du gris clair au gris foncé */
+    border: 5px solid gold; /* Bordure plus épaisse et dorée */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25); /* Ombre portée */
+    }
+
+    .card.special h2 {
+      font-size: 1.8rem; /* Taille du titre plus grande */
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    
+    .card.special .meta {
+      color: #aaa;
+    }
+    
+    .card.special .button.open {
+      background-color: #2e7d32;
+      border-radius: 8px;
+    }
+    
+    .card.special:hover {
+      transform: scale(1.05); /* Effet de zoom au survol */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Ombre renforcée au survol */
+    }
+
     .meta {
       font-size: 0.9rem;
       color: #aaa;
       margin-bottom: 1rem;
+      text-align: center;
     }
     .desc {
       margin-bottom: 1rem;
+      word-wrap: break-word;
+      flex-grow: 1; /* Allow the description to grow and take available space */
     }
     .status {
       font-weight: bold;
-      margin-bottom: 0.5rem;
+      padding-top: 0.5rem;
+      margin-top: auto;
+    }
+    .status.updated {
+      color: #4caf50;
+    }
+    .status.abandoned {
+      color: #e53935;
+    }
+    .status.warning {
+      color: #fbc02d;
     }
     a.button {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      background: #4caf50;
+      display: block;
+      width: 100%;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
       color: white;
       text-decoration: none;
       font-weight: bold;
       transition: background 0.3s ease;
+      margin: 0.3rem 0;
+      box-sizing: border-box;
     }
-    a.button:hover {
-      background: #45a049;
+    a.open {
+      background: #2e7d32;
+    }
+    a.open:hover {
+      background: #25682b;
+    }
+    a.video {
+      background: #e57373;
+    }
+    a.video:hover {
+      background: #ef5350;
+    }
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      bottom: 60px; /* Make space between buttons and status */
+      left: 0;
+      right: 0;
     }
   </style>
 </head>
 <body>
-  <h1>New World Sheets - by MrMojitoTV</h1>
-  <div class="alert">
-    <p><strong>Important:</strong> If you want to modify any of the sheets, you first need to <strong>Make a Copy</strong> of it. To do so, after opening the sheet, click on <strong>File > Make a copy</strong> and then save this file.<br/>
-    Please note that this file won't be kept updated, so you have to come back to this website to get the latest version!</p>
+  <header>
+    <h1>New World Sheets - by MrMojitoTV</h1>
+  </header>
+
+  <!-- Social Buttons -->
+  <div class="social-buttons">
+    <!-- Twitch Button -->
+    <a href="https://www.twitch.tv/mrmojitotv" target="_blank" title="Twitch">
+      <img src="images/twitch-logo.png" alt="Twitch" style="width: 40px; height: 40px;">
+    </a>
+    
+    <!-- YouTube Button -->
+    <a href="https://www.youtube.com/@MrMojitoTV" target="_blank" title="YouTube">
+      <img src="images/youtube-logo.png" alt="YouTube" style="width: 40px; height: 40px;">
+    </a>
+    
+    <!-- Discord Button -->
+    <a href="https://discord.gg/f5BBnn5nmR" target="_blank" title="Discord">
+      <img src="images/discord-logo.png" alt="Discord" style="width: 40px; height: 40px;">
+    </a>
   </div>
+
+
+  <div class="alert">
+    <p><strong>IMPORTANT:</strong> If you want to modify any of the sheets, you first need to <strong>Make a Copy</strong> of it.<br/>To do so, after opening the sheet, click on <strong>File > Make a copy</strong> and then save this file.<br/>Please note that this file won't be kept updated, so you have to come back to this website to get the latest version!</p>
+  </div>
+
   <div class="grid">
-    <div class="card">
-      <h2>List of Buffs and Debuffs</h2>
-      <div class="meta">v5.0.0 – Last updated: 23/05/2024 | Game version: 5.0.1</div>
-      <div class="desc">List of all Empower/Fortify/Weaken/etc., check boxes to reach caps! Includes damage formula and cap info.</div>
-      <div class="status">Status: ❗ NEED S6 UPDATE</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/1LfvIKEP6ALVQQL1VXbFMSwTFCy4hSFiBKOY2ydnMXoU/edit?usp=sharing" target="_blank">Open Sheet</a>
+    <!-- List of Buffs and Debuffs -->
+    <div class="card special">
+      <h2>↕️ List of Buffs and Debuffs</h2>
+      <div class="meta">v7.0.0 | 23/04/2025 | Season 7</div>
+      <div class="desc">List of all the Empower / Fortify / Weaken / Rand / Disease / Slow / BDM, check boxes to find out how much of these you have and if you reach cap! (With Damage Formula and Caps information)</div>
+      <div class="buttons-container">
+        <a href="https://docs.google.com/spreadsheets/d/1LfvIKEP6ALVQQL1VXbFMSwTFCy4hSFiBKOY2ydnMXoU/edit?usp=sharing" class="button open" target="_blank">Open Sheet</a>
+      </div>
+      <div class="status warning">Updating to S7...</div>
     </div>
+    
+    <!-- NW:A S7 - Tierlists and Main Changes -->
     <div class="card">
-      <h2>[PTR] List of Buffs and Debuffs</h2>
-      <div class="meta">v5.0.0 – Last updated: 18/03/2023 | Game version: PTR-S5</div>
-      <div class="desc">Same as above, but with PTR values! Currently includes a damage calculator (WiP).</div>
-      <div class="status">Status: ❗ NEED S6 UPDATE</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/1dkvh_TfyHiUssiZPqlTU6E1mElA4UWe2sPhLOHo7GxU/edit?usp=sharing" target="_blank">Open Sheet</a>
+      <h2>📋 NW:A S7 - Tierlists and Main Changes</h2>
+      <div class="meta">v7.0.0 | 21/01/2024 | Season 7</div>
+      <div class="desc">Contains a list of all the changes per season, a list of artifacts, tierlists of all items</div>
+      <div class="buttons-container">
+        <a href="https://docs.google.com/spreadsheets/d/1POUVTFSgep-vINzNvgVd7oP_O7dyzWsY2WEmx6eLypg/edit?usp=sharing" class="button open" target="_blank">Open Sheet</a>
+      </div>
+      <div class="status updated">Updated !</div>
     </div>
+
+    <!-- Sandworm Raid Helper -->
     <div class="card">
-      <h2>NW:A S7 - Tierlists and Main Changes</h2>
-      <div class="meta">v7.0.0 – Last updated: 21/01/2025 | Game version: Season 7</div>
-      <div class="desc">Contains a list of all the changes per season, a list of artifacts, tierlists of all items.</div>
-      <div class="status">Status: ✅ Updated</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/1POUVTFSgep-vINzNvgVd7oP_O7dyzWsY2WEmx6eLypg/edit?usp=sharing" target="_blank">Open Sheet</a>
+      <h2>🐍 Sandworm Raid Helper</h2>
+      <div class="meta">v3.0.0 | 16/10/2024 | Game vAeternum</div>
+      <div class="desc">A complete guide for the Sandworm Trial! Contains detailed composition, with detailed roles/trees/gear, explained strat, Q&A, and explained abilities and Status Effects</div>
+      <div class="buttons-container">
+        <a href="https://www.youtube.com/watch?v=1hGCX9T6IqE" class="button video" target="_blank">Video</a>
+        <a href="https://docs.google.com/spreadsheets/d/1mr5AxEXMEtGrmarC4W-PLFkiVSoUFi1p10rJmBo69j8/edit?usp=sharing" class="button open" target="_blank">Open Sheet</a>
+      </div>
+      <div class="status updated">Updated !</div>
     </div>
+
+    <!-- Gorgon Raid Helper -->
     <div class="card">
-      <h2>Sandworm Raid Helper</h2>
-      <div class="meta">v3.0.0 – Last updated: 16/10/2024 | Game version: Aeternum</div>
-      <div class="desc">Complete guide for the Sandworm Trial with roles, gear, strategy, and Q&A.</div>
-      <div class="status">Status: 🔧 Almost Updated</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/1mr5AxEXMEtGrmarC4W-PLFkiVSoUFi1p10rJmBo69j8/edit?usp=sharing" target="_blank">Open Sheet</a>
-      <a class="button" href="https://www.youtube.com/watch?v=1hGCX9T6IqE&t=53s" target="_blank">📺 Video</a>
+      <h2>👁️ Gorgon Raid Helper</h2>
+      <div class="meta">v3.0.0 | 19/10/2024 | Game vAeternum</div>
+      <div class="desc">A complete guide for the Gorgon Raid ! Contains detailed composition, with detailed roles/trees/gear, explained strat, Q&A, and explained abilities and Status Effects</div>
+      <div class="buttons-container">
+        <a href="https://www.youtube.com/watch?v=NeYOqHj59ro" class="button video" target="_blank">Video</a>
+        <a href="https://docs.google.com/spreadsheets/d/19Q44yFeW2OZPYCH-OIJHKyvD9HOYz5SKZoTDBLRGXug/edit?usp=sharing" class="button open" target="_blank">Open Sheet</a>
+      </div>
+      <div class="status warning">Missing last boss guide</div>
     </div>
+
+    <!-- ALL QUESTS -->
     <div class="card">
-      <h2>Gorgon Raid Helper</h2>
-      <div class="meta">v1.0 – Last updated: 19/10/2024 | Game version: Aeternum</div>
-      <div class="desc">Complete guide for the Gorgon Raid with roles, gear, strategy, and Q&A.</div>
-      <div class="status">Status: 🧩 Missing last boss guide</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/19Q44yFeW2OZPYCH-OIJHKyvD9HOYz5SKZoTDBLRGXug/edit?usp=sharing" target="_blank">Open Sheet</a>
-      <a class="button" href="https://www.youtube.com/watch?v=NeYOqHj59ro&t=626s" target="_blank">📺 Video</a>
+      <h2>🧭 ALL QUESTS</h2>
+      <div class="meta">v1.0.0 | 19/10/2024 | Game vAeternum</div>
+      <div class="desc">A visualization of all the quests in New World: Aeternum - Containing MSQ (with details), side quests, repeatable quests, Artifact quests (with details)</div>
+      <div class="buttons-container">
+        <a href="https://docs.google.com/spreadsheets/d/1-3Au09xQS_cqB2MMAvITGHYE17pbYKP1vCWjNm2bym0/edit?usp=sharing" class="button open" target="_blank">Open Sheet</a>
+      </div>
+      <div class="status updated">Updated !</div>
     </div>
+
+    <!-- NW:A Threat Changes -->
     <div class="card">
-      <h2>ALL QUESTS</h2>
-      <div class="meta">v1.0.0 – Last updated: 19/10/2024 | Game version: Aeternum</div>
-      <div class="desc">Visualization of all quests in New World: Aeternum, with MSQ details, side and artifact quests.</div>
-      <div class="status">Status: ✅ Updated</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/1-3Au09xQS_cqB2MMAvITGHYE17pbYKP1vCWjNm2bym0/edit?usp=sharing" target="_blank">Open Sheet</a>
+      <h2>⚔️ NW:A Threat Changes</h2>
+      <div class="meta">v1.0.0 | 19/10/2024 | Game vAeternum</div>
+      <div class="desc">A summary of all the changes to Threat with New World: Aeternum update</div>
+      <div class="buttons-container">
+        <a href="https://www.youtube.com/watch?v=m61K-rWy5bI" class="button video" target="_blank">Video</a>
+        <a href="https://docs.google.com/spreadsheets/d/13ClGSK0s7fpEY_dBo7npc7MYWiIENDZI8obk62MbFKE/edit?usp=sharing" class="button open" target="_blank">Open Sheet</a>
+      </div>
+      <div class="status updated">Updated !</div>
     </div>
+
+    <!-- Stamina Damage -->
     <div class="card">
-      <h2>NW:A Threat Changes</h2>
-      <div class="meta">v1.0.0 – Last updated: 19/10/2024 | Game version: Aeternum</div>
-      <div class="desc">Summary of all the changes to Threat in New World: Aeternum update.</div>
-      <div class="status">Status: ✅ Updated</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/13ClGSK0s7fpEY_dBo7npc7MYWiIENDZI8obk62MbFKE/edit?usp=sharing" target="_blank">Open Sheet</a>
-      <a class="button" href="https://www.youtube.com/watch?v=m61K-rWy5bI&t=17s" target="_blank">📺 Video</a>
+      <h2>🛡️ Stamina Damage</h2>
+      <div class="meta">v1.0.0 | 19/10/2024 | Game vAeternum</div>
+      <div class="desc">A comparison of all the abilities of NW:A on their Stamina Damage and Stagger Damage</div>
+      <div class="buttons-container">
+        <a href="https://docs.google.com/spreadsheets/d/1v24Jl-1kqMgW6bk2vAcU16gFZxv7z9s7qk71EvUwFq8/edit?usp=sharing" class="button open" target="_blank">Open Sheet</a>
+      </div>
+      <div class="status updated">Updated !</div>
     </div>
+
+    <!-- [PTR] List of Buffs and Debuffs -->
     <div class="card">
-      <h2>Stamina Damage</h2>
-      <div class="meta">v1.0.0 – Last updated: 19/10/2024 | Game version: Aeternum</div>
-      <div class="desc">Comparison of all NW:A abilities based on stamina and stagger damage.</div>
-      <div class="status">Status: ✅ Updated</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/1SV1K-vxt1p5SwoUhmoDkUH6B5_FPTH8yB-MzwbLTJ8Q/edit?usp=sharing" target="_blank">Open Sheet</a>
+      <h2>↕️ [PTR] List of Buffs and Debuffs</h2>
+      <div class="meta">v5.0.0 | 18/03/2023 | PTR-S5</div>
+      <div class="desc">Same list, but with PTR values, has a Work-in-Progress damage calculator too</div>
+      <div class="buttons-container">
+        <a href="https://docs.google.com/spreadsheets/d/1dkvh_TfyHiUssiZPqlTU6E1mElA4UWe2sPhLOHo7GxU/edit?usp=sharing" class="button open" target="_blank">Open Sheet</a>
+      </div>
+      <div class="status warning">Waiting for S8 PTR</div>
     </div>
+
+    <!-- Mutation Leaderboards -->
     <div class="card">
-      <h2>Mutation Leaderboards - PBs</h2>
-      <div class="meta">v2.0.0 – Last updated: 21/07/2023 | Game version: 2.0.1</div>
-      <div class="desc">Track your Personal Bests in M3s each week, with WRs, group comparisons, and ranks.</div>
-      <div class="status">Status: 🚫 Abandoned for now</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/1TEDOg_ME9D0tZSnZKkLCsSPj9x9GZc277CTFfa-MU50/edit?usp=sharing" target="_blank">Open Sheet</a>
+      <h2>🏆 Mutation Leaderboards - PBs</h2>
+      <div class="meta">v2.0.0 | 21/07/2023 | Game v2.0.1</div>
+      <div class="desc">A sheet to keep track of your Personal Bests in M3s each week, with comparison of other groups, WRs, and ranking</div>
+      <div class="buttons-container">
+        <a href="https://docs.google.com/spreadsheets/d/1djbS9Hbkwt9k91g0OUjQStgS0fTtL3eCwTq5G0vX2dc0/edit?usp=sharing" class="button open" target="_blank">Open Sheet</a>
+      </div>
+      <div class="status abandoned">Abandoned for now</div>
     </div>
   </div>
 </body>
