@@ -112,9 +112,9 @@
       font-family: 'Montserrat', sans-serif;
     }
     .card.special {
-    /*background: linear-gradient(135deg, #b0b0b0, #595959); /* Dégradé du gris clair au gris foncé */
-    border: 5px solid gold; /* Bordure plus épaisse et dorée */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25); /* Ombre portée */
+      /*background: linear-gradient(135deg, #d3d3d3, #4f4f4f);*/
+      border: 5px solid gold;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
     }
 
     .card.special h2 {
@@ -149,6 +149,31 @@
       word-wrap: break-word;
       flex-grow: 1; /* Allow the description to grow and take available space */
     }
+    
+    .card.new {
+      /*background: linear-gradient(135deg, #d3d3d3, #4f4f4f);*/
+      border: 5px solid white;
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+      animation: bounce 1.5s infinite;
+    }
+    .card.new h2 {
+      font-size: 1.8rem;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .card.new .meta {
+      color: #aaa;
+    }
+    .card.new .button.open {
+      background-color: #2e7d32;
+      border-radius: 8px;
+    }
+    .card.new:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
     .status {
       font-weight: bold;
       padding-top: 0.5rem;
@@ -200,6 +225,39 @@
       height: 70%;
       object-fit: contain;
     }
+    .new-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet, red);
+      background-size: 1400% 1400%;
+      color: white;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 10;
+      animation: rainbow 3s linear infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+    
+    @keyframes rainbow {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
 
   </style>
 </head>
@@ -238,6 +296,18 @@
       <div class="status warning">Updating to S7...</div>
     </div>
     
+    <!-- Heartrune Charge -->
+    <div class="card new">
+      <div class="new-badge">NEW!</div>
+      <h2>💣 Heartrune Charging</h2>
+      <div class="meta">v1.0.0 | 26/04/2024 | Season 7</div>
+      <div class="desc">Explains how heartrune charging works / containss a Heartrune Charge calculator / Tables to know how much each attack or status effect charges the heartrune</div>
+      <div class="buttons-container">
+        <a href="https://docs.google.com/spreadsheets/d/1CCGhqQOVggzn8mSeuWf_761j_D-uTLS5J-hwjhNHOy4/edit?usp=sharing" class="button open" target="_blank">Open Sheet</a>
+      </div>
+      <div class="status updated">Updated !</div>
+    </div>
+
     <!-- NW:A S7 - Tierlists and Main Changes -->
     <div class="card">
       <h2>📋 NW:A S7 - Tierlists and Main Changes</h2>
